@@ -1,15 +1,14 @@
 package com.todd.jspmysql;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import java.util.List;
 
 /**
  * JavaBean class used in jsp action tags.
  * @author Todd Gardner
  */
 public class Employee implements Serializable {
-    /**
-     * 
-     */
     private static final long serialVersionUID = 1L;
     private String firstName;
     private String lastName;
@@ -18,13 +17,8 @@ public class Employee implements Serializable {
     private String address;
     private String contact;
     
-    public Employee() { //needed?
-		setFirstName("");
-		setLastName("");
-		setUsername("");
-		setPassword("");
-		setAddress("");
-		setContact("");
+    public Employee() {
+    	
     }
     
     public Employee (String first_name, String last_name, String username, String password, String address, String contact) {
@@ -35,6 +29,23 @@ public class Employee implements Serializable {
 		setAddress(address);
 		setContact(contact);
     }
+    
+	//public Employee (
+	public Employee (String first_name, String last_name, String username, String address, String contact) {
+	      //print all Employees
+		/*
+		 * for (Employee emp : EmployeeDao.getAllEmployee()) {
+		 * System.out.println("Employee: [Id : "
+		 * +emp.getId()+", Name : "+emp.getName()+" ]");
+		 */
+		
+		getFirstName();
+		getLastName();
+		getUsername();
+		getAddress();
+		getContact();
+		//return null;
+	}
     
     public String getFirstName() {
         return firstName;
@@ -75,7 +86,6 @@ public class Employee implements Serializable {
     }
     @Override
 	public String toString() {
-		return "Employee [firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password="
-				+ password + ", address=" + address + ", contact=" + contact + "]";
+		return "Employee [first_name=" + firstName + ", lastName=" + lastName + ", username=" + username + ", address=" + address + ", contact=" + contact + "]";
 	}
 }

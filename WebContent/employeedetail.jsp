@@ -8,7 +8,23 @@
 </head>
 <body>
 	<h2> ${firstName}, </h2><br/>
-	<p> ${message} </p>
+	<p> ${message} </p><br />
+	<h2>Retrieve employees from the database</h2>
+	<table>
+		<tr>
+			<td>First name</td>
+			<td>Last name</td>
+			<td>Username</td>
+			<td>Address</td>
+			<td>Contact</td>
+		<tr>
+			<td>${firstName}</td>
+			<td>${lastName}</td>
+			<td>${username}</td>
+			<td>${address}</td>
+			<td>${contact}</td>	
+		</tr>
+	</table>
 
 </body>
 </html>
