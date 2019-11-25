@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.todd.jspmysql.Employee;
 
@@ -42,13 +44,17 @@ public class EmployeeDao {
 			  employee.setUsername(rs.getString("username"));
 			  employee.setAddress(rs.getString("address"));
 			  employee.setContact(rs.getString("contact"));
+			  
+			  List <Employee> employeeList = new ArrayList<Employee>();
+			  employeeList.add(employee);
+			  for (Employee result : employeeList) {
+				  System.out.println("Result list: " + result); //same as EMPLOYEE
+			  }
 			  			   
-			  //System.out.println("Prepared statement: " + statement);
-			  //System.out.println("Result set: " + rs); 
-			  //System.out.println("EMPloyee: " + emp.toString());
-			  System.out.println("EMPLOYEE: " + employee); 
+			  System.out.println("EMPLOYEE: " + employee); //same as result list
+			  System.out.println("EMPLOYEE LIST: " + employeeList); an array of arrays
 			  //return rs; 
-			  //return employee;
+			  //return employee; employeeList;
 			  }
 			  //else { System.out.println("Failed to make connection!"); }
 			 
