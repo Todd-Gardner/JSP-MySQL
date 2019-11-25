@@ -8,10 +8,14 @@ public class ResultSet {
 	 * "root"; String password = ""; try { Class.forName(driver); } catch
 	 * (ClassNotFoundException e) { e.printStackTrace(); } Connection connection =
 	 * null; Statement statement = null; ResultSet resultSet = null;
-	 * //------------------- try{ connection =
+	 * //------------------- 
+	 * try{ 
+	 * connection =
 	 * DriverManager.getConnection(connectionUrl+database, userid, password);
 	 * statement=connection.createStatement(); String sql ="select * from users";
-	 * resultSet = statement.executeQuery(sql); while(resultSet.next()){ %> <tr>
+	 * resultSet = statement.executeQuery(sql); 
+	 * 
+	 * while(resultSet.next()){ %> <tr>
 	 * <td><%=resultSet.getString("first_name") %></td>
 	 * <td><%=resultSet.getString("last_name") %></td>
 	 * <td><%=resultSet.getString("city_name") %></td>

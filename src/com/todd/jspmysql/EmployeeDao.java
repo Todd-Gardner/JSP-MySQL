@@ -11,9 +11,10 @@ import com.todd.jspmysql.Employee;
 
 public class EmployeeDao {
 	
-	public ResultSet getEmployee() throws ClassNotFoundException { //int /Employee employee
-		ResultSet rs = null;
-		//Employee emp = new Employee();
+	private Employee employee;
+
+	public Employee getEmployee() throws ClassNotFoundException { //int /Employee employee
+		//ResultSet rs = null;
 		
 		String GET_USERS_SQL = "SELECT first_name, last_name, username, address, contact FROM employee;";
 		
@@ -24,49 +25,33 @@ public class EmployeeDao {
         		//PreparedStatement preparedStatement = connection.prepareStatement(GET_USERS_SQL)) 
         		Statement statement = connection.createStatement()){
         	
-        	rs = statement.executeQuery(GET_USERS_SQL);
-        	
-			
-			  while (rs.next()) { 
-				  rs.getString("first_name"); 
-				  rs.getString("last_name"); 
-				  rs.getString("username");
-				  rs.getString("address");
-				  rs.getString("contact");
-			  }
-			  System.out.println(rs);
-				  
-			/*
-			 * // Employee employee = new Employee(rs.getString("first_name"),
-			 * rs.getString("last_name"), rs.getString("username"), rs.getString("address"),
-			 * rs.getString("contact")); }
-			 */
-        	
-        	//ResultSet rs = preparedStatement.executeQuery();
+        	ResultSet rs = statement.executeQuery(GET_USERS_SQL);
         	
     		/*
     		 * for (Employee emp : EmployeeDao.getAllEmployee()) {
     		 * System.out.println("Employee: [Id : "
     		 * +emp.getId()+", Name : "+emp.getName()+" ]");
     		 */
-        	
-			/*
-			 * if (rs.next()) { Employee employee = new Employee(rs.getString("first_name"),
-			 * rs.getString("last_name"), rs.getString("username"), rs.getString("address"),
-			 * rs.getString("contact"));
-			 * 
-			 * emp.setFirstName(rs.getString("first_name"));
-			 * emp.setLastName(rs.getString("last_name"));
-			 * emp.setUsername(rs.getString("username"));
-			 * emp.setAddress(rs.getString("address"));
-			 * emp.setContact(rs.getString("contact"));
-			 * 
-			 * 
-			 * System.out.println("Prepared statement: " + statement);
-			 * System.out.println("Result set: " + rs); System.out.println("EMPloyee: " +
-			 * emp.toString()); System.out.println("EMPLOYEE: " + employee); return rs; }
-			 * else { System.out.println("Failed to make connection!"); }
-			 */
+        			
+			  while (rs.next()) {// Employee employee = new Employee(rs.getString("first_name"),
+			  //rs.getString("last_name"), rs.getString("username"), rs.getString("address"),
+			 // rs.getString("contact"));
+			  employee = new Employee();
+			  employee.setFirstName(rs.getString("first_name"));
+			  employee.setLastName(rs.getString("last_name"));
+			  employee.setUsername(rs.getString("username"));
+			  employee.setAddress(rs.getString("address"));
+			  employee.setContact(rs.getString("contact"));
+			  			   
+			  //System.out.println("Prepared statement: " + statement);
+			  //System.out.println("Result set: " + rs); 
+			  //System.out.println("EMPloyee: " + emp.toString());
+			  System.out.println("EMPLOYEE: " + employee); 
+			  //return rs; 
+			  //return employee;
+			  }
+			  //else { System.out.println("Failed to make connection!"); }
+			 
 	        
 	    } catch (SQLException e) {
 	        System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
@@ -74,7 +59,7 @@ public class EmployeeDao {
 	        e.printStackTrace();
 	    }
                  		
-		return rs;
+		return employee;
 	} 
 
     public int registerEmployee(Employee employee) throws ClassNotFoundException {
@@ -127,38 +112,4 @@ public class EmployeeDao {
         }
     }
 
-
-	/*
-	 * public Object getAllEmployee() throws ClassNotFoundException { Employee emp =
-	 * new Employee();
-	 * 
-	 * String GET_USERS_SQL = "SELECT" + " VALUES (?, ?, ?, ?, ?)" +
-	 * "(first_name, last_name, username, address, contact)" + "FROM employee;";
-	 * 
-	 * //int result = 0;
-	 * 
-	 * Class.forName("com.mysql.jdbc.Driver");
-	 * 
-	 * try (Connection connection = DriverManager
-	 * .getConnection("jdbc:mysql://localhost:3306/mysql_database?useSSL=false",
-	 * "root", "6114tts!"); PreparedStatement preparedStatement =
-	 * connection.prepareStatement(GET_USERS_SQL)) {
-	 * 
-	 * ResultSet rs = preparedStatement.executeQuery(); if (rs.next()) {
-	 * emp.setFirstName(rs.getString("first_name"));
-	 * emp.setLastName(rs.getString("last_name"));
-	 * emp.setUsername(rs.getString("username"));
-	 * emp.setAddress(rs.getString("address"));
-	 * emp.setContact(rs.getString("contact"));
-	 * 
-	 * 
-	 * System.out.println("Prepared statement: " + preparedStatement);
-	 * System.out.println("Result set: " + rs);
-	 * //System.out.println("Employee list: " + employeeList); } else {
-	 * System.out.println("Failed to make connection!"); }
-	 * 
-	 * } catch (SQLException e) { System.err.format("SQL State: %s\n%s",
-	 * e.getSQLState(), e.getMessage()); } catch (Exception e) {
-	 * e.printStackTrace(); } return null; }
-	 */
 }

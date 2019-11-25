@@ -21,8 +21,8 @@ public class employeeServlet extends HttpServlet {
 		
 		String message = "";
 		String url = "";
-		//Employee emp; //
-		java.sql.ResultSet emp;
+		Employee emp = null; //
+		//java.sql.ResultSet emp;
 		
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
@@ -78,8 +78,17 @@ public class employeeServlet extends HttpServlet {
 				
 				try 
 				{
-					
+					emp = new Employee();
 					emp = employeeDao.getEmployee();//(employee) /.getAllEmployee()
+					//for (Employee e : EmployeeDao.getEmployee()) {
+					firstName = employee.getFirstName();
+					lastName = employee.getLastName();
+					username = employee.getUsername();
+					address = employee.getAddress();
+					contact = employee.getContact();
+					//}
+					
+					
 					//System.out.println("Servlet EMPloyee: " + emp.toString()); //first column in DB
 					//System.out.println("Servlet EMPLOYEE: " + employee.toString()); //Last entry in DB
 					//System.out.println("-----------");
@@ -101,6 +110,8 @@ public class employeeServlet extends HttpServlet {
 			url = "/employeedetail.jsp";
 			
 		}
+		request.setAttribute("emp", emp); // just testing
+		
 		request.setAttribute("firstName", firstName);
 		request.setAttribute("lastName", lastName);
 		request.setAttribute("username", username);

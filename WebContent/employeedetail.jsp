@@ -10,7 +10,7 @@
 	<h2> ${firstName}, </h2><br/>
 	<p> ${message} </p><br />
 	<h2>Retrieve employees from the database</h2>
-	<table>
+	<table border="1">
 		<tr>
 			<td>First name</td>
 			<td>Last name</td>
@@ -25,6 +25,7 @@
 			<td>${contact}</td>	
 		</tr>
 	</table>
+	${emp}
 
 </body>
 </html>
